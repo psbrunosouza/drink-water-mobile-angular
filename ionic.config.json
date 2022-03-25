@@ -1,0 +1,7 @@
+{
+  "name": "drink-water",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
