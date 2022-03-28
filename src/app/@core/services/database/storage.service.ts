@@ -9,6 +9,7 @@ export class StorageService {
   private appStorage: Storage | null = null;
 
   constructor(private storage: Storage) {
+    this.init();
   }
 
   async init(): Promise<void> {

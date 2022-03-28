@@ -18,13 +18,13 @@
   </div>
 
   <div class="actions">
-    <ion-button type="button" fill="clear" class="ion-button"  size="large">
+    <ion-button (click)="selectedPage = 'drink_page'" type="button" fill="clear" class="ion-button"  size="large">
       <ion-icon  name="water"></ion-icon>
     </ion-button>
-    <ion-button type="button" fill="clear" class="ion-button" size="large">
+    <ion-button  (click)="selectedPage = 'analytics_page'" type="button" fill="clear" class="ion-button" size="large">
       <ion-icon name="analytics"></ion-icon>
     </ion-button>
-    <ion-button type="button" fill="clear" class="ion-button" size="large">
+    <ion-button  (click)="selectedPage = 'person_page'" type="button" fill="clear" class="ion-button" size="large">
       <ion-icon  name="person"></ion-icon>
     </ion-button>
   </div>
