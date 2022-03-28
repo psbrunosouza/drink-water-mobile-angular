@@ -4,6 +4,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
+    redirectTo: 'setup'
+  },
+  {
+    path: 'setup',
     loadChildren: () => import('./pages/setup/setup.module').then(m => m.SetupPageModule)
   },
   {

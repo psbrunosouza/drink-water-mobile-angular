@@ -6,9 +6,16 @@
 
 <ion-content>
   <div class="content">
-
+    <div *ngIf="selectedPage === 'drink_page'">
+      <app-dashboard-drink-reminder></app-dashboard-drink-reminder>
+    </div>
+    <div *ngIf="selectedPage === 'analytics_page'">
+      <app-dashboard-analytics></app-dashboard-analytics>
+    </div>
+    <div *ngIf="selectedPage === 'person_page'">
+      <app-dashboard-person></app-dashboard-person>
+    </div>
   </div>
-
 
   <div class="actions">
     <ion-button type="button" fill="clear" class="ion-button"  size="large">

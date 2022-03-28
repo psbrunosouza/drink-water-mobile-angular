@@ -26,7 +26,6 @@ export class SetupPage implements OnInit {
         }
       });
     });
-
   }
 
   submit(): void{

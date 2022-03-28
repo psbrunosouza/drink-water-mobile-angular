@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,6 +6,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
+  selectedPage = 'drink_page';
 
   constructor() { }
 
