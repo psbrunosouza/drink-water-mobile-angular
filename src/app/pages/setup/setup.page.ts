@@ -3,6 +3,7 @@ import {PersonModel} from '../../@core/models/person.model';
 import {StorageService} from '../../@core/services/database/storage.service';
 import {Router} from '@angular/router';
 import {PersonService} from '../../@core/services/database/person.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-setup',
@@ -14,22 +15,25 @@ export class SetupPage implements OnInit {
 
   person: PersonModel = new PersonModel();
 
-  constructor(private personService: PersonService, private router: Router) { }
+  constructor(private storage: StorageService, private personService: PersonService, private router: Router) { }
 
   ngOnInit() {
     this.loadPersonInformation();
   }
 
   loadPersonInformation(): void {
-    this.personService.findPerson().then((person: PersonModel) => {
-      console.log(person);
-      if(!!person){
-        this.router.navigate(['/dashboard']);
-      }
+    this.storage.init().then(() => {
+      this.personService.findPerson().then((person: PersonModel) => {
+        if(!!person){
+          this.router.navigate(['/dashboard']);
+        }
+      });
     });
   }
 
   submit(): void{
-    this.personService.createPerson(this.person);
+    this.personService.createPerson({...this.person, id: uuidv4(), dailyDrinks: []}).then(() => {
+      this.router.navigate(['/dashboard']);
+    });
   }
 }

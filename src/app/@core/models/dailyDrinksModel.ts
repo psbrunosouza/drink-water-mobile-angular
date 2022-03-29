@@ -1,7 +1,7 @@
 import {DefaultModel} from './default.model';
 import {DrinkModel} from './drink.model';
 
-export class DrinkSetModel extends DefaultModel{
+export class DailyDrinksModel extends DefaultModel{
   date: Date;
   drinks: DrinkModel[];
 }

@@ -1,9 +1,9 @@
 import {DefaultModel} from './default.model';
-import {DrinkSetModel} from './drink-set.model';
+import {DailyDrinksModel} from './dailyDrinksModel';
 
 export class PersonModel extends DefaultModel {
-  height: number;
-  weight: number;
-  totalOfMillilitersToDrink: number;
-  drinkSet: DrinkSetModel[];
+  public height: number;
+  public weight: number;
+  public age: number;
+  public dailyDrinks: DailyDrinksModel[];
 }

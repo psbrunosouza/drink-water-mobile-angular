@@ -1,12 +1,12 @@
 <div class="dashboard-drink-page">
   <div class="dashboard-drink-title">
     <strong >
-      1,950 ml
+      {{loadRemainingDrinks()}} ml
     </strong>
-    <p>Restante: 600 ml</p>
+    <p>Restante: {{calculateTotalOfMillilitersToDrink() - loadRemainingDrinks()}} ml</p>
   </div>
   <div class="dashboard-drink-action">
-    <ion-button type="button" class="ion-button" size="large">
+    <ion-button (click)="addDrink()" type="button" class="ion-button" size="large">
       <ion-icon name="add"></ion-icon>
     </ion-button>
   </div>

@@ -16,4 +16,8 @@ export class PersonService {
   async createPerson(personModel: PersonModel): Promise<void> {
     await this.storage.set(this.localStorageKey, personModel);
   }
+
+  async updatePerson(personModel: PersonModel): Promise<PersonModel> {
+    return this.storage.set(this.localStorageKey, personModel);
+  }
 }
