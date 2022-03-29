@@ -6,8 +6,28 @@
     <p>Restante: {{calculateTotalOfMillilitersToDrink() - loadRemainingDrinks()}} ml</p>
   </div>
   <div class="dashboard-drink-action">
-    <ion-button (click)="addDrink()" type="button" class="ion-button" size="large">
+    <ion-button id="add-drink-button"  type="button" class="ion-button" size="large">
       <ion-icon name="add"></ion-icon>
     </ion-button>
   </div>
 </div>
+
+<ion-popover trigger="add-drink-button"  alignment="center" side="top">
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="addDrink(150)" button="true">
+          <ion-label>150ml</ion-label>
+        </ion-item>
+        <ion-item (click)="addDrink(250)" button="true">
+          <ion-label>250ml</ion-label>
+        </ion-item>
+        <ion-item (click)="addDrink(500)" button="true">
+          <ion-label>500ml</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>
+
+<!--(click)="addDrink()"-->

@@ -6,6 +6,7 @@ import {DailyDrinksModel} from '../../../../@core/models/dailyDrinksModel';
 import { v4 as uuidv4 } from 'uuid';
 import {DrinkModel} from '../../../../@core/models/drink.model';
 import {format} from 'date-fns';
+import {ToastController} from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard-drink-reminder',
@@ -21,7 +22,7 @@ export class DashboardDrinkReminderComponent implements OnInit {
 
   drink: DrinkModel;
 
-  constructor(private personService: PersonService, private storageService: StorageService) { }
+  constructor(private personService: PersonService, private storageService: StorageService, public toastController: ToastController) { }
 
   ngOnInit() {
     this.person = new PersonModel();
@@ -55,13 +56,13 @@ export class DashboardDrinkReminderComponent implements OnInit {
     return remainingDrinks;
   }
 
-  addDrink(): void{
+  addDrink(milliliters: number): void{
     const dailyDrinkAlreadyTaken = this.person.dailyDrinks.find((dailyDrink) =>
       format(dailyDrink.date, 'yyyy/MM/dd') === format(new Date(), 'yyyy/MM/dd'));
 
     this.drink = {
       id: uuidv4(),
-      milliliters: 250,
+      milliliters,
     };
 
     if(!dailyDrinkAlreadyTaken && !this.person.dailyDrinks.length){
@@ -84,11 +85,21 @@ export class DashboardDrinkReminderComponent implements OnInit {
 
     this.person.dailyDrinks.push(this.dailyDrink);
 
-    this.personService.updatePerson(this.person).then((data) => {});
+    this.personService.updatePerson(this.person).then(() => {
+      this.addDrinkToast(milliliters);
+    });
   }
 
   calculateTotalOfMillilitersToDrink(): number {
     return this.person.weight * this.calculateBaseMilliliters();
+  }
+
+  async addDrinkToast(milliliters: number) {
+    const toast = await this.toastController.create({
+      message: `Parabéns, você acabou de beber: ${milliliters} ml(s) de água!`,
+      duration: 2000
+    });
+    await toast.present();
   }
 
   private calculateBaseMilliliters(): number {
