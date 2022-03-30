@@ -4,6 +4,7 @@ import {DashboardAnalyticsComponent} from './dashboard-analytics/dashboard-analy
 import {DashboardDrinkReminderComponent} from './dashboard-drink-reminder/dashboard-drink-reminder.component';
 import {DashboardPersonComponent} from './dashboard-person/dashboard-person.component';
 import {IonicModule} from '@ionic/angular';
+import {AppComponentsModule} from '../../app-components/app-components.module';
 
 
 
@@ -15,7 +16,8 @@ import {IonicModule} from '@ionic/angular';
   ],
   imports: [
     CommonModule,
-    IonicModule
+    IonicModule,
+    AppComponentsModule
   ],
   exports: [
     DashboardAnalyticsComponent,

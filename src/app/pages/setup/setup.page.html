@@ -5,39 +5,5 @@
 </ion-header>
 
 <ion-content>
-  <form>
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <h3>Seja bem vindo!</h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          Aqui ajudaremos você a acompanhar seu consumo diário de água.
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col >
-          <ion-item class="ion-no-padding">
-            <ion-label position="floating">Peso</ion-label>
-            <ion-input [(ngModel)]="person.weight" name="weight"  type="number" [required]="true"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col >
-          <ion-item class="ion-no-padding">
-            <ion-label position="floating">Altura</ion-label>
-            <ion-input [(ngModel)]="person.height" name="height" type="number" [required]="true"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row class="ion-justify-content-end">
-        <ion-col size="3">
-          <ion-button [disabled]="!person.weight || !person.weight" [style]="'width: 100%'" (click)="submit()" size="medium">Salvar</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
+  <app-app-components-setup-person-form [person]="person"></app-app-components-setup-person-form>
 </ion-content>

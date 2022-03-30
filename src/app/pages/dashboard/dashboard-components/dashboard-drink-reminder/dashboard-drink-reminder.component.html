@@ -1,15 +1,23 @@
-<div class="dashboard-drink-page">
+<div class="dashboard-drink-page" >
   <div class="dashboard-drink-title">
     <strong >
-      {{loadRemainingDrinks()}} ml
+      {{loadTakenDrinks()}} ml
     </strong>
-    <p>Restante: {{calculateTotalOfMillilitersToDrink() - loadRemainingDrinks()}} ml</p>
+    <p>Restante: {{personService.calculateTotalOfMillilitersToDrink(person) - loadTakenDrinks()}} ml</p>
   </div>
   <div class="dashboard-drink-action">
     <ion-button id="add-drink-button"  type="button" class="ion-button" size="large">
       <ion-icon name="add"></ion-icon>
     </ion-button>
   </div>
+</div>
+
+
+
+<div [style.transform]="'translateY(' + getPercentageValueOfTakenDrinks() * -1 + 'vh' + ')'" class="animated-water-background">
+  <div class="wave first-wave">
+  </div>
+  <div class="rest-of-water"></div>
 </div>
 
 <ion-popover trigger="add-drink-button"  alignment="center" side="top">
@@ -30,4 +38,3 @@
   </ng-template>
 </ion-popover>
 
-<!--(click)="addDrink()"-->

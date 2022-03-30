@@ -22,7 +22,7 @@ export class DashboardDrinkReminderComponent implements OnInit {
 
   drink: DrinkModel;
 
-  constructor(private personService: PersonService, private storageService: StorageService, public toastController: ToastController) { }
+  constructor(public personService: PersonService, private storageService: StorageService, public toastController: ToastController) { }
 
   ngOnInit() {
     this.person = new PersonModel();
@@ -39,7 +39,7 @@ export class DashboardDrinkReminderComponent implements OnInit {
     });
   }
 
-  loadRemainingDrinks(): number {
+  loadTakenDrinks(): number {
     let remainingDrinks = 0;
 
     const dailyDrinkAlreadyTaken = this.person?.dailyDrinks?.find((dailyDrink) =>
@@ -57,7 +57,7 @@ export class DashboardDrinkReminderComponent implements OnInit {
   }
 
   addDrink(milliliters: number): void{
-    const dailyDrinkAlreadyTaken = this.person.dailyDrinks.find((dailyDrink) =>
+    const dailyDrinkAlreadyTaken = this.person?.dailyDrinks?.find((dailyDrink) =>
       format(dailyDrink.date, 'yyyy/MM/dd') === format(new Date(), 'yyyy/MM/dd'));
 
     this.drink = {
@@ -65,7 +65,9 @@ export class DashboardDrinkReminderComponent implements OnInit {
       milliliters,
     };
 
-    if(!dailyDrinkAlreadyTaken && !this.person.dailyDrinks.length){
+    console.log(dailyDrinkAlreadyTaken, this.person.dailyDrinks);
+
+    if(!dailyDrinkAlreadyTaken){
       this.dailyDrink = {
         id: uuidv4(),
         date: new Date(),
@@ -90,9 +92,12 @@ export class DashboardDrinkReminderComponent implements OnInit {
     });
   }
 
-  calculateTotalOfMillilitersToDrink(): number {
-    return this.person.weight * this.calculateBaseMilliliters();
-  }
+
+  getPercentageValueOfTakenDrinks(): number {
+    return (this.loadTakenDrinks() * 100) / this.personService.calculateTotalOfMillilitersToDrink(this.person) > 100
+      ? 100
+      : (this.loadTakenDrinks() * 100) / this.personService.calculateTotalOfMillilitersToDrink(this.person);
+  };
 
   async addDrinkToast(milliliters: number) {
     const toast = await this.toastController.create({
@@ -100,19 +105,5 @@ export class DashboardDrinkReminderComponent implements OnInit {
       duration: 2000
     });
     await toast.present();
-  }
-
-  private calculateBaseMilliliters(): number {
-    if(!!this.person.age) {
-      if(this.person.age <= 30){
-        return 40;
-      }else if(this.person.age > 30 && this.person.age <= 55){
-        return 35;
-      }else {
-        return 30;
-      }
-    }else {
-      return 35;
-    }
   }
 }
