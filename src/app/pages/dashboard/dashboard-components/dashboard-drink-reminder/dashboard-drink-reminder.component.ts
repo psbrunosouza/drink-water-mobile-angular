@@ -96,7 +96,7 @@ export class DashboardDrinkReminderComponent implements OnInit {
   getPercentageValueOfTakenDrinks(): number {
     return (this.loadTakenDrinks() * 100) / this.personService.calculateTotalOfMillilitersToDrink(this.person) > 100
       ? 100
-      : (this.loadTakenDrinks() * 100) / this.personService.calculateTotalOfMillilitersToDrink(this.person);
+      : +Math.round((this.loadTakenDrinks() * 100) / this.personService.calculateTotalOfMillilitersToDrink(this.person));
   };
 
   async addDrinkToast(milliliters: number) {
