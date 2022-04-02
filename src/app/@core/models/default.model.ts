@@ -1,3 +1,3 @@
 export class DefaultModel {
-  id: number;
+  id: string;
 }

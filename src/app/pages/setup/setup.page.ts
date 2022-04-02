@@ -1,33 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonModel} from '../../@core/models/person.model';
-import {StorageService} from '../../@core/services/database/storage.service';
-import {Router} from '@angular/router';
-import {PersonService} from '../../@core/services/database/person.service';
-import {ToastController} from '@ionic/angular';
+import {UserModel} from '../../@core/models/user.model';
+import {UserService} from '../../@core/services/user.service';
 
 @Component({
   selector: 'app-setup',
   templateUrl: './setup.page.html',
   styleUrls: ['./setup.page.scss'],
-  providers: [PersonService]
+  providers: [UserService]
 })
 export class SetupPage implements OnInit {
 
-  person: PersonModel = new PersonModel();
+  user: UserModel;
 
-  constructor(private storage: StorageService, private personService: PersonService, private router: Router) { }
-
-  ngOnInit() {
-    this.loadPersonInformation();
+  constructor(private userService: UserService) {
   }
 
-  loadPersonInformation(): void {
-    this.storage.init().then(() => {
-      this.personService.findPerson().then((person: PersonModel) => {
-        if(!!person){
-          this.router.navigate(['/dashboard']);
-        }
-      });
+  ngOnInit() {
+    this.user = new UserModel();
+    this.loadUser();
+  }
+
+  loadUser(): void {
+    this.userService.findUser().subscribe((data) => {
+      this.user = data ?? {};
     });
   }
 }

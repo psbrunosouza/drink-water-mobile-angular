@@ -14,7 +14,7 @@
       <ion-col >
         <ion-item class="ion-no-padding">
           <ion-label position="floating">Informe seu peso</ion-label>
-          <ion-input [(ngModel)]="person.weight" name="weight"  type="number" [required]="true"></ion-input>
+          <ion-input [(ngModel)]="user.weight" name="weight"  type="number" [required]="true"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -22,21 +22,21 @@
       <ion-col >
         <ion-item class="ion-no-padding">
           <ion-label position="floating">Informe sua altura</ion-label>
-          <ion-input [(ngModel)]="person.height" name="height" type="number" [required]="true"></ion-input>
+          <ion-input [(ngModel)]="user.height" name="height" type="number" [required]="true"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col >
-        <ion-item class="ion-no-padding">
-          <ion-label position="floating">Quantidade de água recomendada</ion-label>
-          <ion-input type="number" name="recommendedQuantity" [value]="personService.calculateTotalOfMillilitersToDrink(person)" disabled="true"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+<!--    <ion-row>-->
+<!--      <ion-col >-->
+<!--        <ion-item class="ion-no-padding">-->
+<!--          <ion-label position="floating">Quantidade de água recomendada</ion-label>-->
+<!--          <ion-input type="number" name="recommendedQuantity" [value]="personService.calculateTotalOfMillilitersToDrink(person)" disabled="true"></ion-input>-->
+<!--        </ion-item>-->
+<!--      </ion-col>-->
+<!--    </ion-row>-->
     <ion-row class="ion-justify-content-end">
       <ion-col >
-        <ion-button [disabled]="!person.weight || !person.height" (click)="submit()" expand="block" size="medium">Salvar</ion-button>
+        <ion-button [disabled]="!user.weight || !user.height" (click)="createUser()" expand="block" size="medium">Salvar</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

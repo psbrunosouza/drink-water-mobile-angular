@@ -1,109 +1,81 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonModel} from '../../../../@core/models/person.model';
-import {PersonService} from '../../../../@core/services/database/person.service';
-import {StorageService} from '../../../../@core/services/database/storage.service';
-import {DailyDrinksModel} from '../../../../@core/models/dailyDrinksModel';
-import { v4 as uuidv4 } from 'uuid';
-import {DrinkModel} from '../../../../@core/models/drink.model';
+import {UserModel} from '../../../../@core/models/user.model';
+import {UserService} from '../../../../@core/services/user.service';
+import {DailyMillilitersModel} from '../../../../@core/models/daily-milliliters.model';
+import {UuidService} from '../../../../@core/providers/uuid.service';
 import {format} from 'date-fns';
-import {ToastController} from '@ionic/angular';
+import {DrinkModel} from '../../../../@core/models/drink.model';
 
 @Component({
   selector: 'app-dashboard-drink-reminder',
   templateUrl: './dashboard-drink-reminder.component.html',
   styleUrls: ['./dashboard-drink-reminder.component.scss'],
-  providers: [PersonService]
+  providers: [UserService ]
 })
 export class DashboardDrinkReminderComponent implements OnInit {
+  user: UserModel;
 
-  person: PersonModel;
-
-  dailyDrink: DailyDrinksModel;
+  dailyMilliliters: DailyMillilitersModel;
 
   drink: DrinkModel;
 
-  constructor(public personService: PersonService, private storageService: StorageService, public toastController: ToastController) { }
+  constructor(private userService: UserService, private uuidService: UuidService) { }
 
   ngOnInit() {
-    this.person = new PersonModel();
-    this.dailyDrink = new DailyDrinksModel();
+    this.user = new UserModel();
+    this.dailyMilliliters = new DailyMillilitersModel();
     this.drink = new DrinkModel();
-    this.loadPerson();
+
+    this.loadUser();
   }
 
-  loadPerson(): void {
-    this.storageService.init().then(() => {
-      this.personService.findPerson().then((person) => {
-        this.person = person;
-      });
-    });
-  }
+  addDrink(milliliter: number): void {
+    const alreadyExists = this.user.dailyMillilitersModels.find((dailyDrink) => dailyDrink.date === format(new Date(), 'yyyy-MM-dd'));
 
-  loadTakenDrinks(): number {
-    let remainingDrinks = 0;
-
-    const dailyDrinkAlreadyTaken = this.person?.dailyDrinks?.find((dailyDrink) =>
-      format(dailyDrink.date, 'yyyy/MM/dd') === format(new Date(), 'yyyy/MM/dd'));
-
-    if(!dailyDrinkAlreadyTaken){
-      return remainingDrinks;
-    }
-
-    dailyDrinkAlreadyTaken.drinks.forEach((drink) => {
-      remainingDrinks += drink.milliliters;
-    });
-
-    return remainingDrinks;
-  }
-
-  addDrink(milliliters: number): void{
-    const dailyDrinkAlreadyTaken = this.person?.dailyDrinks?.find((dailyDrink) =>
-      format(dailyDrink.date, 'yyyy/MM/dd') === format(new Date(), 'yyyy/MM/dd'));
-
-    this.drink = {
-      id: uuidv4(),
-      milliliters,
-    };
-
-    console.log(dailyDrinkAlreadyTaken, this.person.dailyDrinks);
-
-    if(!dailyDrinkAlreadyTaken){
-      this.dailyDrink = {
-        id: uuidv4(),
-        date: new Date(),
+    if(!alreadyExists){
+      this.dailyMilliliters = {
+        id: this.uuidService.generateUUID(),
+        date: format(new Date(), 'yyyy-MM-dd'),
         drinks: []
-      } as DailyDrinksModel;
+      };
 
-      this.dailyDrink.drinks.push(this.drink);
+      this.drink = {
+        id: this.uuidService.generateUUID(),
+        milliliters: milliliter
+      };
+
+      this.dailyMilliliters.drinks.push(this.drink);
+
+      this.user = {
+        ...this.user,
+        dailyMillilitersModels: []
+      };
+
+      this.user.dailyMillilitersModels.push(this.dailyMilliliters);
     }else {
-      this.dailyDrink = {
-        id: dailyDrinkAlreadyTaken.id,
-        date: dailyDrinkAlreadyTaken.date,
-        drinks: dailyDrinkAlreadyTaken.drinks
-      } as DailyDrinksModel;
+      this.dailyMilliliters = {
+        id: alreadyExists.id,
+        date: alreadyExists.date,
+        drinks: alreadyExists.drinks
+      };
 
-      this.dailyDrink.drinks.push(this.drink);
+      this.drink = {
+        id: this.uuidService.generateUUID(),
+        milliliters: milliliter
+      };
+
+      this.dailyMilliliters.drinks.push(this.drink);
+
+      this.user.dailyMillilitersModels[this.user.dailyMillilitersModels.findIndex((daily) => daily.id === alreadyExists.id)] =  this.dailyMilliliters;
     }
 
-    this.person.dailyDrinks.push(this.dailyDrink);
-
-    this.personService.updatePerson(this.person).then(() => {
-      this.addDrinkToast(milliliters);
-    });
+    this.userService.saveUser(this.user);
   }
 
-
-  getPercentageValueOfTakenDrinks(): number {
-    return (this.loadTakenDrinks() * 100) / this.personService.calculateTotalOfMillilitersToDrink(this.person) > 100
-      ? 100
-      : +Math.round((this.loadTakenDrinks() * 100) / this.personService.calculateTotalOfMillilitersToDrink(this.person));
-  };
-
-  async addDrinkToast(milliliters: number) {
-    const toast = await this.toastController.create({
-      message: `Parabéns, você acabou de beber: ${milliliters} ml(s) de água!`,
-      duration: 2000
+  loadUser(): void {
+    this.userService.findUser().subscribe((data) => {
+      this.user = data;
+      console.log(this.user);
     });
-    await toast.present();
   }
 }

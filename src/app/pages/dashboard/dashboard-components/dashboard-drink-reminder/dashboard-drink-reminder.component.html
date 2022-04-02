@@ -1,14 +1,14 @@
 <div class="dashboard-drink-page" >
   <div class="dashboard-drink-title">
-    <div class="congratulations" *ngIf="getPercentageValueOfTakenDrinks() >= 100;">
-      <strong>
-        Parabéns! 🥳
-      </strong>
-    </div>
-    <strong >
-      {{loadTakenDrinks()}} ml
-    </strong>
-    <p>Restante: {{personService.calculateTotalOfMillilitersToDrink(person) > loadTakenDrinks() ? personService.calculateTotalOfMillilitersToDrink(person) - loadTakenDrinks() : 0}} ml</p>
+<!--    <div class="congratulations" *ngIf="getPercentageValueOfTakenDrinks() >= 100;">-->
+<!--      <strong>-->
+<!--        Parabéns! 🥳-->
+<!--      </strong>-->
+<!--    </div>-->
+<!--    <strong >-->
+<!--      {{loadTakenDrinks()}} ml-->
+<!--    </strong>-->
+<!--    <p>Restante: {{personService.calculateTotalOfMillilitersToDrink(person) > loadTakenDrinks() ? personService.calculateTotalOfMillilitersToDrink(person) - loadTakenDrinks() : 0}} ml</p>-->
   </div>
   <div class="dashboard-drink-action">
     <ion-button id="add-drink-button"  type="button" class="ion-button" size="large">
@@ -19,12 +19,12 @@
 
 
 
-<div [style.transform]="'translateY(' + getPercentageValueOfTakenDrinks() * -1 + 'vh' + ')'" class="animated-water-background">
-  <div class="percentage">{{getPercentageValueOfTakenDrinks() + '%'}}</div>
-  <div class="wave first-wave">
-  </div>
-  <div class="rest-of-water"></div>
-</div>
+<!--<div [style.transform]="'translateY(' + getPercentageValueOfTakenDrinks() * -1 + 'vh' + ')'" class="animated-water-background">-->
+<!--  <div class="percentage">{{getPercentageValueOfTakenDrinks() + '%'}}</div>-->
+<!--  <div class="wave first-wave">-->
+<!--  </div>-->
+<!--  <div class="rest-of-water"></div>-->
+<!--</div>-->
 
 <ion-popover trigger="add-drink-button"  alignment="center" side="top">
   <ng-template>
