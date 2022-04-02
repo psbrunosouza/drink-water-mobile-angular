@@ -13,9 +13,10 @@ export class AppComponentsSetupPersonFormComponent implements OnInit {
 
   @Input() user: UserModel;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(public userService: UserService, private router: Router) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   createUser(): void {
     this.userService.saveUser({...this.user, dailyMillilitersModels: []}).subscribe(() => {

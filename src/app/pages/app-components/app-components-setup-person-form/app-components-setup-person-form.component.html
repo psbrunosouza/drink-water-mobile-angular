@@ -26,14 +26,14 @@
         </ion-item>
       </ion-col>
     </ion-row>
-<!--    <ion-row>-->
-<!--      <ion-col >-->
-<!--        <ion-item class="ion-no-padding">-->
-<!--          <ion-label position="floating">Quantidade de água recomendada</ion-label>-->
-<!--          <ion-input type="number" name="recommendedQuantity" [value]="personService.calculateTotalOfMillilitersToDrink(person)" disabled="true"></ion-input>-->
-<!--        </ion-item>-->
-<!--      </ion-col>-->
-<!--    </ion-row>-->
+    <ion-row>
+      <ion-col >
+        <ion-item class="ion-no-padding">
+          <ion-label position="floating">Quantidade de água recomendada</ion-label>
+          <ion-input type="number" name="recommendedQuantity" [value]="userService.calculateTotalOfMillilitersToDrink(user)" disabled="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
     <ion-row class="ion-justify-content-end">
       <ion-col >
         <ion-button [disabled]="!user.weight || !user.height" (click)="createUser()" expand="block" size="medium">Salvar</ion-button>

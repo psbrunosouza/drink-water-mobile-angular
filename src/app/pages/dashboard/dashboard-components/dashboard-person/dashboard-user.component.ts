@@ -3,12 +3,12 @@ import {UserModel} from '../../../../@core/models/user.model';
 import {UserService} from '../../../../@core/services/user.service';
 
 @Component({
-  selector: 'app-dashboard-person',
-  templateUrl: './dashboard-person.component.html',
-  styleUrls: ['./dashboard-person.component.scss'],
+  selector: 'app-dashboard-user',
+  templateUrl: './dashboard-user.component.html',
+  styleUrls: ['./dashboard-user.component.scss'],
   providers: [UserService]
 })
-export class DashboardPersonComponent implements OnInit {
+export class DashboardUserComponent implements OnInit {
 
   user: UserModel;
 
@@ -16,6 +16,7 @@ export class DashboardPersonComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = new UserModel();
     this.loadUser();
   }
 

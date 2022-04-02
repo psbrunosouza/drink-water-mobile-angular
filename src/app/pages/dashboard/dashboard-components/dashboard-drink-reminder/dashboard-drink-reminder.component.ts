@@ -19,7 +19,7 @@ export class DashboardDrinkReminderComponent implements OnInit {
 
   drink: DrinkModel;
 
-  constructor(private userService: UserService, private uuidService: UuidService) { }
+  constructor(public userService: UserService, private uuidService: UuidService) { }
 
   ngOnInit() {
     this.user = new UserModel();
@@ -75,7 +75,6 @@ export class DashboardDrinkReminderComponent implements OnInit {
   loadUser(): void {
     this.userService.findUser().subscribe((data) => {
       this.user = data;
-      console.log(this.user);
     });
   }
 }

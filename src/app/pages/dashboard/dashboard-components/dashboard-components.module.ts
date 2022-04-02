@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {DashboardAnalyticsComponent} from './dashboard-analytics/dashboard-analytics.component';
 import {DashboardDrinkReminderComponent} from './dashboard-drink-reminder/dashboard-drink-reminder.component';
-import {DashboardPersonComponent} from './dashboard-person/dashboard-person.component';
+import {DashboardUserComponent} from './dashboard-person/dashboard-user.component';
 import {IonicModule} from '@ionic/angular';
 import {AppComponentsModule} from '../../app-components/app-components.module';
 
@@ -12,7 +12,7 @@ import {AppComponentsModule} from '../../app-components/app-components.module';
   declarations: [
     DashboardAnalyticsComponent,
     DashboardDrinkReminderComponent,
-    DashboardPersonComponent
+    DashboardUserComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +22,7 @@ import {AppComponentsModule} from '../../app-components/app-components.module';
   exports: [
     DashboardAnalyticsComponent,
     DashboardDrinkReminderComponent,
-    DashboardPersonComponent
+    DashboardUserComponent
   ]
 })
 export class DashboardComponentsModule { }
