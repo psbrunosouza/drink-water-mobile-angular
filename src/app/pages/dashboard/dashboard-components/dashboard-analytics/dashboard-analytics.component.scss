@@ -31,3 +31,9 @@ ion-item {
   --padding-start: 0px;
   --inner-padding-start: 8px;
 }
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}

@@ -3,40 +3,32 @@
   "height": 1.9,
   "dailyMillilitersModels": [
     {
-      "id": "7c7eed3c-04e4-4337-8bb0-00e6fe806479",
+      "id": "cf0f0845-7e24-4891-9ab1-c788bb0c43a0",
       "date": "2022-04-02",
       "drinks": [
         {
-          "id": "3ff9f72a-6a37-4151-946d-38819405d935",
+          "id": "eeb19c79-1b00-44bc-82ee-87d3cb08b23b",
           "milliliters": 500
         }
       ]
     },
     {
-      "id": "7335d05d-8f40-4566-a08d-2cc7de71b5d9",
+      "id": "4177447c-fd79-43bc-952e-e6e2249834b9",
+      "date": "2022-04-03",
+      "drinks": [
+        {
+          "id": "fca554d8-b8de-4d8f-96b8-c45549bd35f0",
+          "milliliters": 250
+        }
+      ]
+    },
+    {
+      "id": "ba344c2c-2b20-46d4-9ee7-0afd1de107a2",
       "date": "2022-05-03",
       "drinks": [
         {
-          "id": "01886945-1c5f-4b7a-bc70-a2c1bce43e3c",
+          "id": "54a46deb-20af-4778-9e40-0e13792c9c9b",
           "milliliters": 250
-        },
-        {
-          "id": "6073d500-3bb3-455e-a8f0-df3868e84214",
-          "milliliters": 500
-        }
-      ]
-    },
-    {
-      "id": "7335d05d-8f40-4566-a08d-2cc7de71b5d9",
-      "date": "2022-05-02",
-      "drinks": [
-        {
-          "id": "01886945-1c5f-4b7a-bc70-a2c1bce43e3c",
-          "milliliters": 250
-        },
-        {
-          "id": "6073d500-3bb3-455e-a8f0-df3868e84214",
-          "milliliters": 500
         }
       ]
     }

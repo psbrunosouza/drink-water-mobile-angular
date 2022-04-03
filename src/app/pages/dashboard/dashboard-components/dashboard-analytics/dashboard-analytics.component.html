@@ -24,15 +24,30 @@
       <div *ngSwitchCase="'monthly'">
         <ion-list  *ngFor="let data of userService.getFollowUpByMonths(user)">
           <ion-item class="no-padding">
-            <ion-label><strong> {{data.monthName}}</strong></ion-label>
-            <div>
-              <span [class]="data.milliliters >= data.millilitersTotal ? 'goal-complete' : 'goal-incomplete'">{{data.milliliters}}ml(s)</span> de
-              <span>{{data.millilitersTotal}}ml(s)</span>
+            <div  class="list-item">
+              <div><strong>{{data.monthName}}</strong><strong>/{{data.year}}</strong></div>
+              <div>
+                <span [class]="data.milliliters >= data.millilitersTotal ? 'goal-complete' : 'goal-incomplete'">{{data.milliliters}}ml(s)</span> de
+                <span>{{data.millilitersTotal}}ml(s)</span>
+              </div>
             </div>
           </ion-item>
         </ion-list>
       </div>
 
+      <div *ngSwitchCase="'yearly'">
+        <ion-list  *ngFor="let data of userService.getFollowUpByMonths(user, 'yearly')">
+          <ion-item class="no-padding">
+            <div  class="list-item">
+              <div><strong> {{data.year}}</strong></div>
+              <div>
+                <span [class]="data.milliliters >= data.millilitersTotal ? 'goal-complete' : 'goal-incomplete'">{{data.milliliters}}ml(s)</span> de
+                <span>{{data.millilitersTotal}}ml(s)</span>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
     </div>
 
 
