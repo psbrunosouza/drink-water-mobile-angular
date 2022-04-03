@@ -1,6 +1,5 @@
 <div class="dashboard-analytics-page" >
   <ion-content>
-
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -20,7 +19,33 @@
       </ion-segment-button>
     </ion-segment>
 
-    <div [ngSwitch]="segment">
+    <div class="chart" [ngSwitch]="segment">
+      <div *ngSwitchCase="'monthly'">
+        <div style="display: block">
+          <canvas baseChart
+            [data]="getBarChartByMonth(user)"
+            [options]="barChartOptions"
+            [type]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'yearly'">
+        <div style="display: block">
+          <canvas baseChart
+            [data]="getBarChartByYear(user)"
+            [options]="barChartOptions"
+            [type]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="list" [ngSwitch]="segment">
       <div *ngSwitchCase="'monthly'">
         <ion-list  *ngFor="let data of userService.getFollowUpByMonths(user)">
           <ion-item class="no-padding">

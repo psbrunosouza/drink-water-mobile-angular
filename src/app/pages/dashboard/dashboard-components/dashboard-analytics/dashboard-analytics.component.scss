@@ -1,8 +1,15 @@
 .dashboard-analytics-page {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 122px);
   overflow-y: scroll;
 
+  .chart {
+    padding: 0 16px;
+  }
+
+  .list {
+    padding: 0 16px;
+  }
 
   .dashboard-analytics-title{
     margin: 0 16px;

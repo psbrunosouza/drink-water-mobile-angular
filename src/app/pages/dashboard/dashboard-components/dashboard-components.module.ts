@@ -6,6 +6,7 @@ import {DashboardUserComponent} from './dashboard-user/dashboard-user.component'
 import {IonicModule} from '@ionic/angular';
 import {AppComponentsModule} from '../../app-components/app-components.module';
 import {FormsModule} from '@angular/forms';
+import {NgChartsModule} from 'ng2-charts';
 
 
 
@@ -19,7 +20,8 @@ import {FormsModule} from '@angular/forms';
     CommonModule,
     IonicModule,
     AppComponentsModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule
   ],
   exports: [
     DashboardAnalyticsComponent,
