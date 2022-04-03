@@ -1,0 +1,45 @@
+{
+  "weight": 90,
+  "height": 1.9,
+  "dailyMillilitersModels": [
+    {
+      "id": "7c7eed3c-04e4-4337-8bb0-00e6fe806479",
+      "date": "2022-04-02",
+      "drinks": [
+        {
+          "id": "3ff9f72a-6a37-4151-946d-38819405d935",
+          "milliliters": 500
+        }
+      ]
+    },
+    {
+      "id": "7335d05d-8f40-4566-a08d-2cc7de71b5d9",
+      "date": "2022-05-03",
+      "drinks": [
+        {
+          "id": "01886945-1c5f-4b7a-bc70-a2c1bce43e3c",
+          "milliliters": 250
+        },
+        {
+          "id": "6073d500-3bb3-455e-a8f0-df3868e84214",
+          "milliliters": 500
+        }
+      ]
+    },
+    {
+      "id": "7335d05d-8f40-4566-a08d-2cc7de71b5d9",
+      "date": "2022-05-02",
+      "drinks": [
+        {
+          "id": "01886945-1c5f-4b7a-bc70-a2c1bce43e3c",
+          "milliliters": 250
+        },
+        {
+          "id": "6073d500-3bb3-455e-a8f0-df3868e84214",
+          "milliliters": 500
+        }
+      ]
+    }
+  ],
+  "id": "user"
+}

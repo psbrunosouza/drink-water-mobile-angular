@@ -19,8 +19,14 @@ export class AppComponentsSetupPersonFormComponent implements OnInit {
   }
 
   createUser(): void {
-    this.userService.saveUser({...this.user, dailyMillilitersModels: []}).subscribe(() => {
-      this.router.navigate(['/dashboard']);
-    });
+    if(this.user.id){
+      this.userService.saveUser({...this.user}).subscribe(() => {
+        this.router.navigate(['/dashboard']);
+      });
+    }else {
+      this.userService.saveUser({...this.user, dailyMillilitersModels: []}).subscribe(() => {
+        this.router.navigate(['/dashboard']);
+      });
+    }
   }
 }
