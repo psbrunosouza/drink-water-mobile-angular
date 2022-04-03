@@ -1,0 +1,104 @@
+.dashboard-drink-page {
+  height: calc(100vh);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  .dashboard-drink-title{
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+
+    strong {
+      font-size: 48px;
+    }
+  }
+
+  .dashboard-drink-action {
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 180px;
+
+    .ion-button {
+      --border-radius: 50%;
+      height: 66px;
+      width: 66px;
+    }
+  }
+
+
+}
+
+ion-popover {
+  --offset-y: -180px;
+}
+
+.animated-water-background {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+
+  transform: translateY(0vh);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s;
+
+  .percentage {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    z-index: 300;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .wave {
+    height: 100px;
+    width: 100%;
+    margin-top: -50px;
+    background: url("../../../../../assets/images/wave_ocean.png");
+    background-size: 500px 50px;
+  }
+
+  .first-wave {
+    animation: first_wave 5s linear infinite;
+    z-index: 200;
+    opacity: 1;
+    animation-delay: 0s;
+
+    @keyframes first_wave {
+      0% {
+        background-position-x: 0;
+      }
+
+      100% {
+        background-position-x: 500px;
+      }
+    }
+  }
+
+
+  .rest-of-water {
+    background-color: #cdecff;
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+.congratulations {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  color: #ffc46c;
+}
+
+

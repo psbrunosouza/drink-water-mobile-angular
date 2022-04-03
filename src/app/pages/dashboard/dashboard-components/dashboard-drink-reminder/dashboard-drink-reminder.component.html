@@ -1,0 +1,47 @@
+<div class="dashboard-drink-page" >
+  <div class="dashboard-drink-title">
+    <div class="congratulations" *ngIf="this.userService.getPercentageValueOfTakenDrinks(user) >= 100;">
+      <strong>
+        Parabéns! 🥳
+      </strong>
+    </div>
+    <strong >
+      {{this.userService.loadTakenDrinks(user)}} ml
+    </strong>
+    <p>Restante: {{this.userService.calculateTotalOfMillilitersToDrink(user) > this.userService.loadTakenDrinks(user)
+      ? this.userService.calculateTotalOfMillilitersToDrink(user) - this.userService.loadTakenDrinks(user)
+      : 0}} ml</p>
+  </div>
+  <div class="dashboard-drink-action">
+    <ion-button id="add-drink-button"  type="button" class="ion-button" size="large">
+      <ion-icon name="add"></ion-icon>
+    </ion-button>
+  </div>
+</div>
+
+<div [style.transform]="'translateY(' + this.userService.getPercentageValueOfTakenDrinks(user) * -1 + 'vh' + ')'" class="animated-water-background">
+  <div class="percentage">{{this.userService.getPercentageValueOfTakenDrinks(user) + '%'}}</div>
+  <div class="wave first-wave">
+  </div>
+  <div class="rest-of-water"></div>
+</div>
+
+<ion-popover dismiss-on-select="true" trigger="add-drink-button"  alignment="center" side="top">
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="addDrink(150)" button="true">
+          <ion-label>150ml</ion-label>
+        </ion-item>
+        <ion-item (click)="addDrink(250)" button="true">
+          <ion-label>250ml</ion-label>
+        </ion-item>
+        <ion-item (click)="addDrink(500)" button="true">
+          <ion-label>500ml</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>
+
+

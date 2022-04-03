@@ -1,0 +1,23 @@
+.content {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.actions {
+  width: 100%;
+  height: 120px;
+  position: fixed;
+  bottom: 0;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .ion-button {
+    --border-radius: 50%;
+    height: 66px;
+    width: 66px;
+  }
+}
+

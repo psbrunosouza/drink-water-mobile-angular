@@ -1,0 +1,37 @@
+{
+  "weight": 90,
+  "height": 1.9,
+  "dailyMillilitersModels": [
+    {
+      "id": "cf0f0845-7e24-4891-9ab1-c788bb0c43a0",
+      "date": "2022-04-02",
+      "drinks": [
+        {
+          "id": "eeb19c79-1b00-44bc-82ee-87d3cb08b23b",
+          "milliliters": 500
+        }
+      ]
+    },
+    {
+      "id": "4177447c-fd79-43bc-952e-e6e2249834b9",
+      "date": "2022-04-03",
+      "drinks": [
+        {
+          "id": "fca554d8-b8de-4d8f-96b8-c45549bd35f0",
+          "milliliters": 250
+        }
+      ]
+    },
+    {
+      "id": "ba344c2c-2b20-46d4-9ee7-0afd1de107a2",
+      "date": "2022-05-03",
+      "drinks": [
+        {
+          "id": "54a46deb-20af-4778-9e40-0e13792c9c9b",
+          "milliliters": 250
+        }
+      ]
+    }
+  ],
+  "id": "user"
+}

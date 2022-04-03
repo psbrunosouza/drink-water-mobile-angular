@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: SetupPage
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('../dashboard/dashboard-routing.module').then(m => m.DashboardPageRoutingModule)
   }
 ];
 

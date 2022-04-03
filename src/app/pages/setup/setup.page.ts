@@ -1,25 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import {PersonModel} from '../../@core/models/person.model';
-import {StorageService} from '../../@core/services/database/storage.service';
+import {UserModel} from '../../@core/models/user.model';
+import {UserService} from '../../@core/services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-setup',
   templateUrl: './setup.page.html',
   styleUrls: ['./setup.page.scss'],
+  providers: [UserService]
 })
 export class SetupPage implements OnInit {
 
-  person: PersonModel = new PersonModel();
+  user: UserModel;
 
-  constructor(private storage: StorageService) { }
-
-  ngOnInit() {
+  constructor(private userService: UserService, private route: Router) {
   }
 
-  submit(): void{
-    // this.storage.set('person', this.person);
-    this.storage.get('person').then((person) => {
-      console.log(person);
+  ngOnInit() {
+    this.user = new UserModel();
+    this.loadUser();
+  }
+
+  loadUser(): void {
+    this.userService.findUser().subscribe((data) => {
+      this.user = data ?? {};
+      if(this.user.id){
+        this.route.navigate(['/dashboard/dashboard-components/drink-reminder']);
+      }
     });
   }
 }

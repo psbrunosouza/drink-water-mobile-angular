@@ -1,0 +1,84 @@
+<div class="dashboard-analytics-page" >
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="dashboard-analytics-title">
+            <h5>Histórico de Consumo</h5>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-segment [(ngModel)]="segment"  (ionChange)="selectSegment($event)">
+      <ion-segment-button value="monthly">
+        <ion-label>Mensal</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="yearly">
+        <ion-label>Anual</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <div class="chart" [ngSwitch]="segment">
+      <div *ngSwitchCase="'monthly'">
+        <div style="display: block">
+          <canvas baseChart
+            [data]="getBarChartByMonth(user)"
+            [options]="barChartOptions"
+            [type]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+
+      <div *ngSwitchCase="'yearly'">
+        <div style="display: block">
+          <canvas baseChart
+            [data]="getBarChartByYear(user)"
+            [options]="barChartOptions"
+            [type]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="list" [ngSwitch]="segment">
+      <div *ngSwitchCase="'monthly'">
+        <ion-list  *ngFor="let data of userService.getFollowUpByMonths(user)">
+          <ion-item class="no-padding">
+            <div  class="list-item">
+              <div><strong>{{data.monthName}}</strong><strong>/{{data.year}}</strong></div>
+              <div>
+                <span [class]="data.milliliters >= data.millilitersTotal ? 'goal-complete' : 'goal-incomplete'">{{data.milliliters}}ml(s)</span> de
+                <span>{{data.millilitersTotal}}ml(s)</span>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+
+      <div *ngSwitchCase="'yearly'">
+        <ion-list  *ngFor="let data of userService.getFollowUpByMonths(user, 'yearly')">
+          <ion-item class="no-padding">
+            <div  class="list-item">
+              <div><strong> {{data.year}}</strong></div>
+              <div>
+                <span [class]="data.milliliters >= data.millilitersTotal ? 'goal-complete' : 'goal-incomplete'">{{data.milliliters}}ml(s)</span> de
+                <span>{{data.millilitersTotal}}ml(s)</span>
+              </div>
+            </div>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" id="infinite-scroll">
+      <ion-infinite-scroll-content loading-spinner="bubbles" loading-text="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+</div>
