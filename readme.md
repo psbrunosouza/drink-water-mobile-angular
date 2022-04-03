@@ -1,66 +1,67 @@
-[//]: # (# Barber Shop - Frontend)
+# Drink Water Reminder App
 
-[//]: # ()
-[//]: # ()
-[//]: # (O Drink Water Reminder é uma aplicação voltada para gerenciamento .)
 
-[//]: # ()
-[//]: # ()
-[//]: # (## ✅ Como Usar)
 
-[//]: # ()
-[//]: # ()
-[//]: # (  ```)
+O Drink Water Reminder é uma aplicação voltada para gerenciamento do consumo de água diário.
 
-[//]: # ()
-[//]: # (# Clone o repositório)
 
-[//]: # ()
-[//]: # ($ git clone https://github.com/psbrunosouza/drink-water-mobile-angular.git)
 
-[//]: # ()
-[//]: # ()
-[//]: # (# Entre na pasta do repositório)
+## ✅ Como Usar
 
-[//]: # ()
-[//]: # ($ cd drink-water-mobile-angular)
 
-[//]: # ()
-[//]: # ()
-[//]: # (# Instale as dependências)
 
-[//]: # ()
-[//]: # ($ yarn install/ npm install)
+  ```
 
-[//]: # ()
-[//]: # ()
-[//]: # (# Rode a aplicação)
 
-[//]: # ()
-[//]: # ($ ionic serve)
+# Clone o repositório
 
-[//]: # ()
-[//]: # (  ```)
 
-[//]: # ()
-[//]: # ()
-[//]: # (## 🚀 Tecnologias)
+$ git clone https://github.com/psbrunosouza/drink-water-mobile-angular.git
 
-[//]: # ()
-[//]: # ()
-[//]: # (Esse projeto foi desenvolvido com:)
 
-[//]: # ()
-[//]: # ()
-[//]: # (- <a href="https://angular.io/">Angular</a>)
 
-[//]: # ()
-[//]: # (- <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/">Ionic</a>)
+# Entre na pasta do repositório
 
-[//]: # ()
-[//]: # ()
-[//]: # (## 📝 Licença)
 
-[//]: # ()
-[//]: # ()
-[//]: # (Este projeto codigo fonte está sob uma licensa MIT. Confira a licença para mais informações.)
+$ cd drink-water-mobile-angular
+
+
+
+# Instale as dependências
+
+
+$ yarn install/ npm install
+
+
+
+# Rode a aplicação
+
+
+$ ionic serve
+
+
+  ```
+
+
+
+## 🚀 Tecnologias
+
+
+
+Esse projeto foi desenvolvido com:
+
+
+
+- <a href="https://angular.io/">Angular</a>
+
+- <a href="https://ionicframework.com/">Ionic</a>
+
+- <a href="https://www.chartjs.org/">Chart JS</a> 
+
+- <a href="https://www.npmjs.com/package/@capacitor/storage">Capacitor Storage</a>
+
+## 📝 Licença
+
+
+
+Este código fonte está sob uma licensa MIT. Confira a licença para mais informações.
