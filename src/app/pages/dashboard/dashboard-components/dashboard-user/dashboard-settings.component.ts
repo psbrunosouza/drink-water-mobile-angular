@@ -3,12 +3,12 @@ import {UserModel} from '../../../../@core/models/user.model';
 import {UserService} from '../../../../@core/services/user.service';
 
 @Component({
-  selector: 'app-dashboard-user',
-  templateUrl: './dashboard-user.component.html',
-  styleUrls: ['./dashboard-user.component.scss'],
+  selector: 'app-dashboard-settings',
+  templateUrl: './dashboard-settings.component.html',
+  styleUrls: ['./dashboard-settings.component.scss'],
   providers: [UserService]
 })
-export class DashboardUserComponent implements OnInit {
+export class DashboardSettingsComponent implements OnInit {
 
   user: UserModel;
 

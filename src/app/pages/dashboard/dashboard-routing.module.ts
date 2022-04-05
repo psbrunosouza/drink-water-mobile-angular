@@ -6,7 +6,7 @@ import {
   DashboardDrinkReminderComponent
 } from './dashboard-components/dashboard-drink-reminder/dashboard-drink-reminder.component';
 import {DashboardAnalyticsComponent} from './dashboard-components/dashboard-analytics/dashboard-analytics.component';
-import {DashboardUserComponent} from './dashboard-components/dashboard-user/dashboard-user.component';
+import {DashboardSettingsComponent} from './dashboard-components/dashboard-user/dashboard-settings.component';
 
 const routes: Routes = [
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'user',
-        component: DashboardUserComponent
+        component: DashboardSettingsComponent
       }
     ]
   },

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {DashboardAnalyticsComponent} from './dashboard-analytics/dashboard-analytics.component';
 import {DashboardDrinkReminderComponent} from './dashboard-drink-reminder/dashboard-drink-reminder.component';
-import {DashboardUserComponent} from './dashboard-user/dashboard-user.component';
+import {DashboardSettingsComponent} from './dashboard-user/dashboard-settings.component';
 import {IonicModule} from '@ionic/angular';
 import {AppComponentsModule} from '../../app-components/app-components.module';
 import {FormsModule} from '@angular/forms';
@@ -14,7 +14,7 @@ import {NgChartsModule} from 'ng2-charts';
   declarations: [
     DashboardAnalyticsComponent,
     DashboardDrinkReminderComponent,
-    DashboardUserComponent
+    DashboardSettingsComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +26,7 @@ import {NgChartsModule} from 'ng2-charts';
   exports: [
     DashboardAnalyticsComponent,
     DashboardDrinkReminderComponent,
-    DashboardUserComponent
+    DashboardSettingsComponent
   ]
 })
 export class DashboardComponentsModule { }

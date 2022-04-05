@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  AppComponentsSetupPersonFormComponent
-} from './app-components-setup-person-form/app-components-setup-person-form.component';
+  AppComponentsSetupUserFormComponent
+} from './app-components-setup-person-form/app-components-setup-user-form.component';
 import {IonicModule} from '@ionic/angular';
 import {FormsModule} from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [AppComponentsSetupPersonFormComponent],
+  declarations: [AppComponentsSetupUserFormComponent],
   imports: [
     CommonModule,
     IonicModule,
     FormsModule
   ],
-  exports: [AppComponentsSetupPersonFormComponent]
+  exports: [AppComponentsSetupUserFormComponent]
 })
 export class AppComponentsModule { }

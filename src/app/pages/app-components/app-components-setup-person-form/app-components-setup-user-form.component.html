@@ -1,0 +1,109 @@
+<form #form="ngForm">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h3>Seja bem vindo!</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        Aqui ajudaremos você a acompanhar seu consumo diário de água.
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="ion-no-padding">
+          <ion-label position="floating">Informe seu peso</ion-label>
+          <ion-input [(ngModel)]="user.weight" name="weight" type="number" [required]="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="ion-no-padding">
+          <ion-label  position="floating">Horário em que acorda</ion-label>
+          <ion-input [value]="user.startTime ?? '08:00:00'" readonly="true" name="start" [(ngModel)]="user.startTime" [required]="true" id="trigger-start-input"></ion-input>
+        </ion-item>
+        <ion-modal
+          [initialBreakpoint]="0.5"
+          [breakpoints]="[0.5, 1]"
+          [swipeToClose]="true"
+          trigger="trigger-start-input">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>Horá Inicial</ion-title>
+              </ion-toolbar>
+            </ion-header>
+
+            <ion-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-datetime
+                      [value]="user.startTime" (ionChange)="getTime($event, 'start')"
+                      show-default-buttons="true"
+                      presentation="time"></ion-datetime>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-content>
+
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="ion-no-padding">
+          <ion-label  position="floating">Horário em que vai dormir</ion-label>
+          <ion-input [value]="user.endTime ?? '21:00:00'" readonly="true" name="end" [(ngModel)]="user.endTime" [required]="true" id="trigger-end-input"></ion-input>
+        </ion-item>
+        <ion-modal
+            [initialBreakpoint]="0.5"
+            [breakpoints]="[0.5, 1]"
+            [swipeToClose]="true"
+            trigger="trigger-end-input">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>Hora Final</ion-title>
+              </ion-toolbar>
+            </ion-header>
+
+            <ion-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-datetime
+                      [value]="user.endTime"
+                      (ionChange)="getTime($event, 'end')"
+                      show-default-buttons="true"
+                      presentation="time"></ion-datetime>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-content>
+
+          </ng-template>
+        </ion-modal>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="ion-no-padding">
+          <ion-label position="floating">Quantidade de água recomendada</ion-label>
+          <ion-input type="number" name="recommendedQuantity"
+                     [value]="userService.calculateTotalOfMillilitersToDrink(user)" disabled="true"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-end">
+      <ion-col>
+        <ion-button [disabled]="form.invalid" (click)="createUser()" expand="block" size="medium">Salvar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+
+
